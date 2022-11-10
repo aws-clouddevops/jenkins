@@ -25,7 +25,6 @@ pipeline {
                 ENV_URL = "stage.google.com"
             }
             steps {
-                sh "echo hello"
                 sh "echo Environment URL is ${ENV_URL}"
                 sh "env"
             }
