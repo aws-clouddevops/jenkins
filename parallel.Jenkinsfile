@@ -16,4 +16,9 @@ pipeline {
             }
         }
     }
+    post {
+        unstable {
+            cleamWs()
+        }
+    }
 }
