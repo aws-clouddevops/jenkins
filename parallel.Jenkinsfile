@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        label: 'ANSIBLE'
+    }
     stages {
         stage('Parallel'){
             parallel {
                 stage('one') {
                     steps {
+                        sh "hostname"
                         echo "sleep 30"
                    }
                 }
