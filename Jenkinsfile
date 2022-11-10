@@ -23,6 +23,14 @@ pipeline {
             steps {
                 sh "echo ${ENV_URL}"
             }
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
         }
         stage('Hi') { 
             environment{
@@ -31,8 +39,7 @@ pipeline {
             steps {
                 sh "echo Environment URL is ${ENV_URL}"
                 sh "env"
-                sh "echo I will be running maven command"
-                sh "mvn clean"
+                sh "echo I will be running maven command"        
             }
         }
     }
