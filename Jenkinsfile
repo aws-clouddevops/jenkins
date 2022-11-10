@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh "echo Environment URL is ${ENV_URL}"
                 sh "env"
-                sh "I will be running maven command"
+                sh "echo I will be running maven command"
                 sh "mvn clean"
             }
         }
