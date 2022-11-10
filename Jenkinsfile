@@ -1,4 +1,4 @@
-pipeline {
+pipeline {  # Directives
     agent any
     stages {
         stage('Hello') {
@@ -6,9 +6,10 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        stage('Hi') {
+        stage('Hi') { # Directives
             steps {
-                echo 'Hi World'
+                sh '''echo hello
+                      echo We are learning jenkins'''
             }
         }
     }
