@@ -23,6 +23,12 @@ pipeline {
             steps {
                 sh "echo ${ENV_URL}"
             }
+        }
+        stage('Hi') { 
+            when { branch 'master' }
+            environment{
+                ENV_URL = "stage.google.com"
+            }
             input {
                 message "Should we continue?"
                 ok "Yes, we should."
@@ -30,11 +36,6 @@ pipeline {
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                 }
-            }
-        }
-        stage('Hi') { 
-            environment{
-                ENV_URL = "stage.google.com"
             }
             steps {
                 sh "echo Environment URL is ${ENV_URL}"
