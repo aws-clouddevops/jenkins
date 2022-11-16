@@ -1,5 +1,5 @@
 node {
-    sta('Example') {
+    stage('Example') {
          echo 'I only execute master branch'
     }
 }
