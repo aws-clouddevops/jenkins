@@ -1,5 +1,5 @@
 node {
     stage('Example') {
-         echo 'I only execute master branch'
+         echo 'In this work we are alone'
     }
 }
