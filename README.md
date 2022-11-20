@@ -12,7 +12,7 @@ pollSCM: This will check for the commits on github and if there are any commits 
 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-All the slaves need tohave Java installed as Jenkins is Java based
+All the slaves need to have Java installed, As Jenkins is Java based.
 
 ### SonarQube : A tools from sonarqube to help un scanning our code and publishing the result to SonarQube
 
