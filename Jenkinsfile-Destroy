@@ -4,6 +4,7 @@ pipeline {
         choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Choose Environment')
     }
     stages {
+
         stage('DB') { 
             steps {
               dir('DB') { 
@@ -16,6 +17,17 @@ pipeline {
         }
     }
 
+        stage('ALB') { 
+            steps {
+              dir('ALB') { 
+                git branch: 'main', url: 'https://github.com/aws-clouddevops/terraform-loadbalancers.git'
+                sh "terrafile -f env-${ENV}/Terrafile"
+                sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars"
+                sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+                sh "terraform destroy -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
+            }
+        }
+    }
         stage('VPC') {
             steps {
               dir('VPC') {
